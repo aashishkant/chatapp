@@ -1,0 +1,76 @@
+/* Your existing CSS styles here */
+
+/* Additional CSS styles for a professional look */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add more styles as needed */
+/* Your existing CSS styles here */
+
+/* Additional CSS styles for a professional look */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-messages,
+.online-users {
+    flex: 1;
+    padding: 1em;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 1em;
+}
+
+.message-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.message-list li {
+    margin-bottom: 0.5em;
+}
+
+.message-input {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+}
+
+#message-input {
+    flex: 1;
+    padding: 0.5em;
+}
+
+#send-button {
+    padding: 0.5em;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #2980b9;
+}
+
+/* Add more styles as needed */

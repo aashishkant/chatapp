@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat Room{% endblock %}
+
+{% block header %}Welcome, {{ username }}!{% endblock %}
+
+{% block content %}
+<div class="card-body online-users-list">
+    {% if online_users %}
+        <ul class="list-unstyled">
+            {% for user in online_users %}
+                <li>{{ user }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No online users</p>
+    {% endif %}
+</div>
+<div class="chat-container">
+    <div class="chat-messages">
+        <h2>Chat Room</h2>
+        <div class="message-list">
+            <ul id="message-list">
+                {% for message in messages %}
+                    <li>
+                        <span class="timestamp">{{ message.timestamp }}</span>
+                        <span class="sender">{{ message.sender }}:</span>
+                        <span class="message">{{ message.message }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="online-users">
+        <h3>Online Users</h3>
+        <ul id="online-users-list">
+            {% for user in online_users %}
+                <li>{{ user }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="message-input">
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <button id="send-button">Send</button>
+</div>
+
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+        const messageList = document.getElementById('message-list');
+
+        sendButton.addEventListener('click', function () {
+            const message = messageInput.value;
+            // Perform any necessary actions with the message, such as sending it to the server
+            // For now, let's just add the message to the list for demonstration
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="timestamp">${new Date().toLocaleTimeString()}</span> <span class="sender">{{ username }}:</span> <span class="message">${message}</span>`;
+            messageList.appendChild(li);
+            messageInput.value = ''; // Clear the input field
+        });
+    });
+</script>
+{% endblock %}
