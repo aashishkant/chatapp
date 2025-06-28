@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic
+email-validator
+python-dotenv
+httpx
+python-multipart
+pytest-asyncio # For testing async WebSocket code
+# sqlalchemy
+# psycopg2-binary (for PostgreSQL)
+# redis (for Redis)
