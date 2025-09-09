@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../server:/app/server # Mounts local server code for live reload
+    # To provide environment variables to the backend service,
+    # create a .env file in the project root (cricket_connect/.env)
+    # by copying from .env.template and filling in your actual values.
+    # Docker Compose will automatically pick it up if it's named .env
+    # in the directory where you run `docker-compose up`.
+    # Alternatively, uncomment and use the 'environment' block below
+    # or use the 'env_file' directive.
+    env_file:
+      - ../.env # Looks for .env file in the parent directory (project root)
+    # environment:
+      # These can override or supplement .env file variables if needed.
+      # - PYTHON_ENV=development
+      # - SECRET_KEY=your_secret_key_from_env_or_set_here
+      # - CRICKET_API_KEY=your_cricket_api_key_from_env
+      # - CRICKET_API_BASE_URL=your_cricket_api_base_url_from_env
+      # - CRICKET_API_HOST=your_cricket_api_host_from_env
+    # depends_on:
+      # - db # Uncomment if using the database service defined below
+      # - redis # Uncomment if using the Redis service defined below
+
+  # db:
+  #   image: postgres:13
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data/
+  #   environment:
+  #     - POSTGRES_USER=user
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=cricket_connect_db
+  #   ports:
+  #     - "5432:5432"
+
+  # redis:
+  #   image: redis:6-alpine
+  #   ports:
+  #     - "6379:6379"
+
+volumes:
+  postgres_data:
